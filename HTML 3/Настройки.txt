@@ -1,0 +1,10 @@
+ШАГ №0 Установить IDE (Среда разработки)
+- Visual Code
+- Web storm ❤️
+- Sublime
+...
+(если позволяет ПК или Кошелёк, можно поставить ИИ агента Cline)
+ШАГ №1 Устанавливаем NODEJS
+1) https://nodejs.org/en/download
+ШАГ №2 Установить нужную библиотеку
+ШАГ №3 Установить npm install pug-cli --save-dev
