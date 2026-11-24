@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Чат на Bootstrap 5</title>
+  <!-- Подключение Bootstrap 5 CSS -->
+  <link href="https://jsdelivr.net" rel="stylesheet">
+</head>
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+
+  <!-- Карточка чата -->
+  <div class="card shadow rounded-4 border-0" style="width: 380px; height: 550px;">
+    
+    <!-- Шапка чата -->
+    <div class="card-header bg-primary text-white d-flex align-items-center gap-3 py-3 rounded-top-4">
+      
+      <div>
+        <h3 class="mb-0 fw-semibold">Поддержка</h3>
+        <h3 class="text-white-50">В сети</h3>
+      </div>
+    </div>
+
+    <!-- Область сообщений -->
+    <div class="card-body overflow-y-auto d-flex flex-column gap-2 bg-body-tertiary" id="chatMessages">
+      <div class="align-self-start bg-white text-dark p-2 px-3 rounded-4 rounded-bottom-start-1 shadow-sm" style="max-width: 75%;">
+        Здравствуйте! Чем я могу вам помочь?
+      </div>
+      <br>
+    </div>
+
+    <!-- Форма ввода -->
+    <div class="card-footer bg-white border-top p-2 rounded-bottom-4">
+      <form class="d-flex gap-2" id="chatForm">
+        <input type="text" class="form-control rounded-pill" id="messageInput" placeholder="Введите сообщение..." autocomplete="off" required>
+        <button type="submit" class="btn btn-primary rounded-pill px-3 fw-medium">Отправить</button>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    const chatForm = document.getElementById('chatForm');
+    const messageInput = document.getElementById('messageInput');
+    const chatMessages = document.getElementById('chatMessages');
+
+    chatForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const text = messageInput.value.trim();
+      if (!text) return;
+
+      addMessage(text, 'sent');
+      messageInput.value = '';
+
+      // Имитация ответа собеседника
+      setTimeout(() => {
+        addMessage('Сообщение получено! Скоро ответим.', 'received');
+      }, 800);
+    });
+
+    function addMessage(text, type) {
+      const msgDiv = document.createElement('div');
+      msgDiv.style.maxWidth = '75%';
+      msgDiv.textContent = text;
+
+      chatMessages.appendChild(msgDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
